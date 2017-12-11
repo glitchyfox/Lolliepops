@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour {
 
@@ -23,12 +23,14 @@ public class TextManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
     myStates = States.question;
-	}
-	
-	// Update is called once per frame
+	}	
+
+// Update is called once per frame
 	void Update () {
-	
-	}
+    if (mystate == States.question) (question();)
+    else if (mystate == States.truestate) {truestate();}
+	else if (mystate == States.falsestate) { falsestate();}
+}
 
     void onEnable() {
     trueButton.onClick.AddListener(delegate { Option1 = true;});
@@ -42,5 +44,15 @@ void question() {
 
     if(option1 == true){myState = States.trueState;}
     else if(option2 == true){mystate = States.falseState;}
+    
     }
+
+    void trueState(){
+    text.text = "correct!";
+}
+
+    void falsestate(){
+    text.text = "Incorrect!";
+}
+
 }
